@@ -1,40 +1,54 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { CounterWrapperComponent } from '../components/counter-wrapper/counter-wrapper';
+import { PlayerService } from '../modules/music/providers/player.service';
+import { NgModule, ErrorHandler, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
+import { AppUpdate } from '@ionic-native/app-update';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { Helpers } from '../providers/helpers';
+import { Media } from '@ionic-native/media';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { File } from '@ionic-native/file';
+import { HttpModule } from '@angular/http';
+import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
+import { AccounttestPage } from '../pages/accounttest/accounttest';
+export function myCustomAudioProviderFactory() {
+  return (window.hasOwnProperty('cordova')) ? new CordovaMediaProvider() : new WebAudioProvider();
+}
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    AccounttestPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    IonicAudioModule.forRoot(defaultAudioProviderFactory), 
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    AccounttestPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    // NQNComData,
+    FileTransfer,
+    File,
+    Helpers,
+    Media,
+    Diagnostic,
+    AppUpdate,
+    PlayerService
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  
 })
 export class AppModule {}

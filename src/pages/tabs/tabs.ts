@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
-
+import { IonicPage, NavController } from 'ionic-angular';
+@IonicPage({
+	name: 'tabs-page', 
+	segment: 'tabs-page'
+})
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
+  tab1Root:any = 'HomePage';
+  tab4Root:any = 'ListSongPage';
+  
+  tab2Root:any = 'AboutPage';
+  tab3Root:any = 'ContactPage';
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
 
   }
 }
