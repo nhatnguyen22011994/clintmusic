@@ -43,7 +43,7 @@
     "cordova-plugin-device": "^1.1.6",
     "cordova-plugin-file": "^4.0.0",
     "cordova-plugin-file-transfer": "^1.6.3",
-    "cordova-plugin-inappbrowser": "^1.7.1",
+    "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-plugin-ionic-keyboard": "^2.0.2",
     "cordova-plugin-ionic-webview": "^1.1.15",
     "cordova-plugin-media": "^4.0.0",
